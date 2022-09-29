@@ -2,7 +2,7 @@ import Koa from 'koa'
 import cors from 'koa2-cors';
 import jsonp from 'koa-jsonp';
 import moment from 'moment';
-
+import { Server } from 'socket.io';
 import localIpAddress from "local-ip-address";
 
 process.env.VITE_BASE_IP = localIpAddress()
@@ -47,7 +47,6 @@ const transformContent = (userId: string, type: number, message: string = "") =>
 
 //配置socket.io
 const server = app.listen(8081)
-import { Server } from 'socket.io';
 //跨域
 const io = new Server(server, {
   cors: {
@@ -56,7 +55,6 @@ const io = new Server(server, {
 })
 
 io.on('connection', (socket) => {
-
   //加入群聊
   socket.on('join-chat', (userName: string, avatar: string) => {
     const user = {
@@ -66,6 +64,7 @@ io.on('connection', (socket) => {
     }
     userList.push(user)
     const content = transformContent(socket.id, 0)
+
     //把当前socketId发送给用户当成唯一标识
     socket.emit('join-success', socket.id, userList)
     //广播进入群聊
@@ -115,4 +114,4 @@ io.on('connection', (socket) => {
   });
 });
 
-exports.module = app
+export default app
