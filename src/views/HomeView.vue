@@ -148,7 +148,7 @@ const quitChat = () => {
             <img :src="getImg(user?.avatar)" alt="" w-10 h-10 rd-10 mx-1>
             <div text-center text-1 w-10 mx-1 truncate>{{user?.userName}}</div>
           </div>
-          <template v-for="u in allOnlineUser" :key="u.id">
+          <template v-for="u in allOnlineUser" :key="u?.id">
             <div relative v-if="u.id !== user.id">
               <img @click="openPrivateChat(u.id)" :src="getImg(u.avatar)" alt="" w-10 h-10 rd-10 mx-1>
               <div text-center text-1 w-10 mx-1 truncate>{{u.userName}}</div>
