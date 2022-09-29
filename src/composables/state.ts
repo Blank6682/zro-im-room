@@ -6,7 +6,7 @@ export const user = useSessionStorage<User>('user', {
   userName: '',
   avatar: 'avatar_1.webp'
 })
-// ref<User[]>([])
+
 export const onlineUsers = useSessionStorage<User[]>('online-user', [])
 
 //房间聊天记录

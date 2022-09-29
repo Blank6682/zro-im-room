@@ -47,10 +47,8 @@ const login = () => {
   if (user.value.userName === '') {
     return Toast.wran('昵称不能为空哦')
   }
-  console.log(101);
 
   scoket.emit('join-chat', user.value.userName, user.value.avatar)
-
   scoket.on('join-success', (socketId: string, userList: User[]) => {
     user.value.id = socketId
     onlineUsers.value = userList

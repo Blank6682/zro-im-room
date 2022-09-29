@@ -1,6 +1,5 @@
 const moment = require('moment')
 
-
 //soclet 用户信息
 let userList = []
 

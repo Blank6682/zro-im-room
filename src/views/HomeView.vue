@@ -55,7 +55,6 @@ onMounted(() => {
   })
 })
 
-
 //当前展示的私聊记录
 const showPrivateRecord = $computed(() => {
   return privateRecord.value.find(c => c.targetUser?.id === curPrivateChatUser?.id)?.chatRecord || []
