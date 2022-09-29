@@ -5,7 +5,7 @@ import moment from 'moment';
 
 import localIpAddress from "local-ip-address";
 
-process.env.BASE_IP = localIpAddress()
+process.env.VITE_BASE_IP = localIpAddress()
 
 const app = new Koa()
 
